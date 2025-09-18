@@ -114,13 +114,13 @@ export async function POST(req: Request) {
 function normalizeRow(row: any): InvoiceRecord {
   const invoiceDate = parse(row.InvoiceDate, "M/d/yyyy HH:mm", new Date());
   return {
-    invoice_no: row.invoiceno,
-    stock_code: row.stockcode,
-    description: row.description,
-    quantity: parseInt(row.quantity, 10),
+    invoice_no: row.InvoiceNo,
+    stock_code: row.StockCode,
+    description: row.Description || "No Description",
+    quantity: parseInt(row.Quantity, 10) > 0 ? parseInt(row.Quantity, 10) : 0,
     invoice_date: invoiceDate.toISOString(),
-    unit_price: parseFloat(row.unitprice),
-    customer_id: row.customerid,
-    country: row.country,
+    unit_price: parseFloat(row.UnitPrice) || 0,
+    customer_id: row.CustomerId || "UNKNOWN",
+    country: row.Country || "UNKNOWN",
   };
 }

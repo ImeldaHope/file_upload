@@ -253,7 +253,7 @@ export default function CSVUploadForm() {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-4 p-4 border rounded-md bg-red-50">
+                  <div className="space-y-4 p-4 border rounded-md bg-red-50 min-w-xl">
                     <p className="font-medium text-red-700">{result.error}</p>
 
                     {result.missingHeaders &&
