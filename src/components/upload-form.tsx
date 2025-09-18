@@ -219,7 +219,7 @@ export default function CSVUploadForm() {
               <div className="flex justify-between text-sm">
                 <span>Processing CSV file...</span>
               </div>
-              <Progress value={undefined} className="w-full" />
+              <Progress value={progressValue} className="w-full" />
             </div>
           </CardContent>
         </Card>
@@ -287,7 +287,7 @@ export default function CSVUploadForm() {
                       <div className="text-sm">
                         <p className="font-semibold mb-1">Details:</p>
                         <ul className="list-disc list-outside ml-6 max-h-40 overflow-y-auto border-t pt-2">
-                          {result.details.map((detail, index) => (
+                          {result.details?.map((detail, index) => (
                             <li key={index}>{detail}</li>
                           ))}
                         </ul>

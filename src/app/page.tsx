@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="font-sans pb-8 bg-gradient-to-br from-slate-50 to-slate-100">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <div className="w-full min-h-screen  py-8">
+        <div className="w-full py-8">
           <div className="container mx-auto px-4">
             <div className="text-center mb-8">
               <h1 className="text-4xl font-bold text-slate-900 mb-4">

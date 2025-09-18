@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import { initializeDatabase, insertInvoicesBatch } from "@/lib/postgresdb";
 import { InvoiceRecord } from "@/types";
 import { validateCSVHeaders, validateCSVRow } from "@/lib/validator";
+import { parse } from "date-fns";
 
 const BATCH_SIZE = 100;
 
@@ -111,12 +112,13 @@ export async function POST(req: Request) {
 }
 
 function normalizeRow(row: any): InvoiceRecord {
+  const invoiceDate = parse(row.InvoiceDate, "M/d/yyyy HH:mm", new Date());
   return {
     invoice_no: row.invoiceno,
     stock_code: row.stockcode,
     description: row.description,
     quantity: parseInt(row.quantity, 10),
-    invoice_date: new Date(row.invoicedate).toISOString(),
+    invoice_date: invoiceDate.toISOString(),
     unit_price: parseFloat(row.unitprice),
     customer_id: row.customerid,
     country: row.country,
